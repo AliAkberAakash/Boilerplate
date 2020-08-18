@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import timber.log.Timber
 
 
-class BaseViewModel : ViewModel(), IViewModel {
+open class BaseViewModel : ViewModel(), IViewModel {
 
     val loader = MutableLiveData<Boolean>()
 

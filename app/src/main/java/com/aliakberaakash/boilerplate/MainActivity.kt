@@ -1,11 +1,16 @@
 package com.aliakberaakash.boilerplate
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import androidx.databinding.ViewDataBinding
+import com.aliakberaakash.boilerplate.core.ui.BaseActivity
+import com.aliakberaakash.boilerplate.core.ui.BaseViewModel
+import com.aliakberaakash.boilerplate.utils.BaseViewModelFactory
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+class MainActivity : BaseActivity<BaseViewModel, ViewDataBinding>() {
+
+    override fun getLayoutId() = R.layout.activity_main
+
+    override fun setVariables(binding: ViewDataBinding) {}
+
+    override fun getViewModelFactory() = BaseViewModelFactory()
+
 }
