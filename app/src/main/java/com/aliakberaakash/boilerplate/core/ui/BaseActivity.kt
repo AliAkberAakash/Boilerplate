@@ -10,6 +10,14 @@ import com.aliakberaakash.boilerplate.utils.BaseViewModelFactory
 
 import java.lang.reflect.ParameterizedType
 
+
+/**
+ * This class is a boilerplate for setting up an Activity
+ * All Activities in this project should extend this class
+ * @author Ali Akber
+ */
+
+
 abstract class BaseActivity<ViewModel: BaseViewModel, Binding: ViewDataBinding> : AppCompatActivity(){
 
     lateinit var viewModel: ViewModel

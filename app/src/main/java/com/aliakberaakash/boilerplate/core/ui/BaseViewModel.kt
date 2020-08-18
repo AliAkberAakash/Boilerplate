@@ -6,7 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import timber.log.Timber
 
-
+/**
+ * This class is a boilerplate for setting up a ViewModel
+ * All ViewModels in this project should extend this class
+ * @author Ali Akber
+ */
 open class BaseViewModel : ViewModel(), IViewModel {
 
     val loader = MutableLiveData<Boolean>()

@@ -12,6 +12,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.aliakberaakash.boilerplate.utils.BaseViewModelFactory
 import java.lang.reflect.ParameterizedType
 
+/**
+ * This class is a boilerplate for setting up a Fragment
+ * All Fragments in this project should extend this class
+ * @author Ali Akber
+ */
 abstract class BaseFragment<ViewModel: BaseViewModel, Binding: ViewDataBinding> : Fragment(){
 
     lateinit var viewModel: ViewModel
