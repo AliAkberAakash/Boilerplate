@@ -1,33 +1,43 @@
 package com.aliakberaakash.boilerplate.core.ui
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.aliakberaakash.boilerplate.utils.BaseViewModelFactory
-
 import java.lang.reflect.ParameterizedType
 
-abstract class BaseActivity<ViewModel: BaseViewModel, Binding: ViewDataBinding> : AppCompatActivity(){
+abstract class BaseFragment<ViewModel: BaseViewModel, Binding: ViewDataBinding> : Fragment(){
 
     lateinit var viewModel: ViewModel
     lateinit var binding: Binding
 
     abstract fun getLayoutId(): Int
 
-    abstract fun getViewModelFactory() : BaseViewModelFactory
-
     abstract fun setVariables(binding: Binding)
+
+    abstract fun getViewModelFactory() : BaseViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this, getViewModelFactory()).get(getViewModelClass())
-        binding = DataBindingUtil.setContentView(this, getLayoutId())
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         binding.lifecycleOwner = this
-        lifecycle.addObserver(viewModel)
         setVariables(binding)
+        lifecycle.addObserver(viewModel)
+        return binding.root
     }
 
     override fun onDestroy() {
@@ -37,9 +47,11 @@ abstract class BaseActivity<ViewModel: BaseViewModel, Binding: ViewDataBinding> 
 
     private fun getViewModelClass(): Class<ViewModel> {
         val type =
-            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0]
+            (javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0]   // index of 0 means first argument of Base class param
         return type as Class<ViewModel>
     }
 
-    fun makeShortToast(message : String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    fun makeShortToast(message : String) = Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+
+
 }
