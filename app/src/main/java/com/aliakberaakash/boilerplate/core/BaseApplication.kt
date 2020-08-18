@@ -2,9 +2,12 @@ package com.aliakberaakash.boilerplate.core
 
 import android.app.Application
 import android.content.Context
+import timber.log.Timber
 
 class BaseApplication : Application() {
 
-    val context: Context = this.applicationContext
-
+    override fun onCreate() {
+        super.onCreate()
+        Timber.plant(Timber.DebugTree())
+    }
 }
