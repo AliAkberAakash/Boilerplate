@@ -1,0 +1,1 @@
+package com.aliakberaakash.boilerplate.core.data
