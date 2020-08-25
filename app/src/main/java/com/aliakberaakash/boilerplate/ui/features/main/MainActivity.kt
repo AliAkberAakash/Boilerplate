@@ -6,7 +6,7 @@ import com.aliakberaakash.boilerplate.R
 import com.aliakberaakash.boilerplate.core.BaseApplication
 import com.aliakberaakash.boilerplate.core.ui.BaseActivity
 import com.aliakberaakash.boilerplate.core.ui.BaseViewModel
-import com.aliakberaakash.boilerplate.data.InjectableItem
+import com.aliakberaakash.boilerplate.data.models.InjectableItem
 import com.aliakberaakash.boilerplate.utils.BaseViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject

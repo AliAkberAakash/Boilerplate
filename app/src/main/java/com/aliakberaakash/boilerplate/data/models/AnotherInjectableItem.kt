@@ -1,4 +1,4 @@
-package com.aliakberaakash.boilerplate.data
+package com.aliakberaakash.boilerplate.data.models
 
 import android.content.Context
 import android.widget.Toast
